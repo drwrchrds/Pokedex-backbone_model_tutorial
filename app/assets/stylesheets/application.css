@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+
+html {
+	height: 100%;
+	background-image: url(pokemon_bg.jpg);
+	background-position: center center;
+	background-size: cover;
+}

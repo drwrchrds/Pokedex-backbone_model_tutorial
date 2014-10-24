@@ -53,5 +53,10 @@ Pokemon = Backbone.Model.extend({
 // create Pokemon Backbone collection
 Pokemons = Backbone.Collection.extend({
   model: Pokemon,
-	url: '/pokemon'
-})
+	url: '/pokemon',
+	comparator: 'number'
+});
+
+$(function() {
+  listPokemon();
+});
