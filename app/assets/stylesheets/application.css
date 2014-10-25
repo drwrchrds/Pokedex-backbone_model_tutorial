@@ -51,4 +51,9 @@ body {
 .poke-list-item {
 	border: thin solid red;
 	padding: 10px;
+	cursor: pointer;
+}
+.poke-list-item:hover {
+	background-color: tomato;
+	color: white;
 }
