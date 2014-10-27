@@ -1707,8 +1707,7 @@ ActiveRecord::Base.transaction do
     stats.delete('evolveLevel')
     stats['evolve_to'] = stats['evolveTo']
     stats.delete('evolveTo')
-    #	stats['moves'] = stats['moves'].to_json if stats['moves']
-    #	stats['levels'] = stats['levels'].to_json if stats['levels']
+
     stats
   end
   
