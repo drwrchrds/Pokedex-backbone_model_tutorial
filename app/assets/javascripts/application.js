@@ -39,18 +39,21 @@ Pokedex.Collections.Pokemon = Backbone.Collection.extend({
 	comparator: 'number'
 });
 
-Pokedex.prototype.listPokemon = function () {
+Pokedex.prototype.listPokemon = function (pokemonCollection, callback) {
 	// create collection
 	// fetch collection
 	// print names asynch
-	var that = this;
-	this.pokes.fetch({
-		success: function() {
-			that.pokes.each(function(poke) {
-				that.renderListItem(poke);
-			});
-		}
-	});
+
+  
+//var that = this;
+//this.pokes.fetch({
+//	success: function() {
+//		that.pokes.each(function(poke) {
+//			that.renderListItem(poke);
+//		});
+//	}
+//});
+//return this.pokes;
 }
 
 Pokedex.prototype.renderListItem = function (pokemon) {
@@ -74,6 +77,9 @@ Pokedex.prototype.createPokemon = function (attrs, callback) {
 	poke.save();
 	this.pokes.add(poke);
 	callback && callback.call(this, poke);
+  // then use this.pokes.create({
+  // success: callback
+  // })
 }
 
 Pokedex.prototype.renderDetail = function (pokemon) {
