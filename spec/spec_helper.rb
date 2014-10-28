@@ -83,3 +83,37 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def create_five_pokemon
+  Pokemon.create!([
+    {
+      name: "Charmander",
+      number: 4,
+      poke_type: "fire",
+      attack: 52,
+      defense: 43,
+      evolve_level: 16,
+      evolve_to: 5,
+      moves: ['scratch', 'ember', 'metal claw'],
+      levels: [5, 10],
+      curve: 1.3,
+      probability: 3
+    }, {
+      name: "Snorlax",
+      number: 143,
+      poke_type: 'normal'
+    }, {
+      name: 'Butterfree',
+      number: 12,
+      poke_type: 'bug'
+    }, {
+      name: 'Electabuzz',
+      number: 125,
+      poke_type: 'electric'
+    }, {
+      name: "Articuno",
+      number: 144,
+      poke_type: 'ice'
+    }
+  ])
+end
