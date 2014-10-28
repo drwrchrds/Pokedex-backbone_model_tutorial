@@ -1,12 +1,9 @@
 describe("listPokemon", function() {
-  beforeEach(function () {
+  it("fetches the passed-in collection", function() {
     this.pokedex = new Pokedex();
     this.pokes = new Pokedex.Collections.Pokemon();
-  });
-
-  it("fetches the passed-in collection", function() {
     var heardRequestTrigger = false;
-    this.pokes.one('request', function() {
+    this.pokes.on('request', function() {
       heardRequestTrigger = true;
     });
 
@@ -14,15 +11,33 @@ describe("listPokemon", function() {
     expect(heardRequestTrigger).toEqual(true);
   });
 
-  it("waits to call the callback until the collection has been filled", function() {
-    var pokeList = [];
-    this.pokedex.listPokemon(this.pokes, function() {
-      this.pokes.each(function(poke) {
-        pokeList.push(poke.get('name'));
+  describe("calling the callback function", function() {
+    var called = false;
+
+    beforeEach(function (done) {
+      this.pokedex = new Pokedex();
+      this.pokes = new Pokedex.Collections.Pokemon();
+
+      this.pokedex.listPokemon(this.pokes, function() {
+        called = true;
+        done();
       });
     });
-    expect(pokeList.length).toEqual(5);
-    expect(pokeList[0]).not.toEqual(undefined);
+
+    it("calls the callback function", function() {
+      expect(called).toEqual(true);
+    });
+
+    it("waits to call the callback until the collection has been filled", function() {
+      var pokeList = [];
+      var that = this;
+      that.pokes.each(function(poke) {
+        pokeList.push(poke.get('name'));
+      });
+
+      expect(pokeList.length).toEqual(5);
+      expect(pokeList[0]).not.toEqual(undefined);
+    });
   });
 });
 

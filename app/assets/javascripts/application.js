@@ -17,7 +17,7 @@
 //= require_tree .
 
 window.Pokedex = function() {
-	this.pokes = new Pokedex.Collections.Pokemon;
+//	this.pokes = new Pokedex.Collections.Pokemon;
 	this.$pokeList = $('.poke-list');
 	this.$pokeDetail = $('.poke-detail');
 	
@@ -44,6 +44,9 @@ Pokedex.prototype.listPokemon = function (pokemonCollection, callback) {
 	// fetch collection
 	// print names asynch
 
+  pokemonCollection.fetch({
+    success: callback
+  });
   
 //var that = this;
 //this.pokes.fetch({
@@ -110,5 +113,5 @@ Pokedex.prototype.showDetail = function (event) {
 
 $(function() {
 	pokedex = new Pokedex;
-  pokedex.listPokemon();
+//  pokedex.listPokemon();
 });
