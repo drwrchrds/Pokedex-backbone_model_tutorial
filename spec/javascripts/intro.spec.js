@@ -25,53 +25,6 @@ describe("Pokedex.Collections.Pokemon", function() {
 });
 
 describe("listPokemon", function() {
-  var pokes = [
-    { 
-      name: "Charmander",
-      number: 4,
-      poke_type: "fire",
-      attack: 52,
-      defense: 43,
-      evolve_level: 16,
-      evolve_to: 5,
-      moves: ['scratch', 'ember', 'metal claw'],
-      levels: [5, 10],
-      curve: 1.3,
-      probability: 3
-    }, {
-      name: "Snorlax",
-      number: 143,
-      poke_type: 'normal'
-    }, {
-      name: 'Butterfree',
-      number: 12,
-      poke_type: 'bug'
-    }, {
-      name: 'Electabuzz',
-      number: 125,
-      poke_type: 'electric'
-    }, {
-      name: "Articuno",
-      number: 144,
-      poke_type: 'ice'
-    }
-  ];
-
-  beforeEach(function(done) {
-    var createdCount = 0;
-
-    pokes.forEach(function(poke) {
-      var model = new Pokedex.Models.Pokemon(poke)
-      model.save({}, {
-        success: function() {
-          createdCount += 1;
-          if(createdCount == 5) {
-            done();
-          }          
-        }
-      });
-    });
-  });
 
   it("fetches the passed-in collection", function() {
     var pokedex = new Pokedex();
@@ -119,5 +72,9 @@ describe("listPokemon", function() {
 
 describe("createPokemon", function() {
   
-  console.log('Im running a testttt');
+  it("returns a Pokemon model", function() {
+    var pokedex = new Pokedex();
+    var poke = pokedex.createPokemon();
+    expect(poke.__proto__).toEqual(Pokedex.Models.Pokemon.prototype);
+  });  
 });
