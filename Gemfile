@@ -37,10 +37,12 @@ gem 'spring',        group: :development
 # Use debugger
 gem 'debugger', group: [:development, :test]
 gem 'backbone-on-rails'
-gem 'jasmine-rails', group: [:development, :test]
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'launchy'
+  gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
+  gem 'jasmine-core', '1.3.1'
+  gem 'jasmine-headless-webkit'
 end
