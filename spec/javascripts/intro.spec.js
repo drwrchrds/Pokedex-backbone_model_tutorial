@@ -1,5 +1,3 @@
-//= require pokedex.js
-
 describe("Pokedex.Models.Pokemon", function() {
   it("has a urlRoot property", function() {
     var poke = new Pokedex.Models.Pokemon();
