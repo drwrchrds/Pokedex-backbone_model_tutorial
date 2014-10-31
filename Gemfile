@@ -42,7 +42,8 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'launchy'
-  gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
-  gem 'jasmine-core', '1.3.1'
+  gem 'jasmine', "~> 2.0.0.rc4"
+#  gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
+  gem 'jasmine-core', "~> 2.0.0.rc3"
   gem 'jasmine-headless-webkit'
 end

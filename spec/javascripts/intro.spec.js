@@ -37,6 +37,10 @@ describe("listPokemon", function() {
     expect(heardRequestTrigger).toEqual(true);
   });
 
+  it("fills the passed-in collection", function() {
+    
+  });
+
   describe("calling the callback function", function() {
     var called = false;
 
