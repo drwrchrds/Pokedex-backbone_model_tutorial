@@ -48,10 +48,10 @@ describe("listPokemon", function() {
       this.pokedex = new Pokedex();
       this.pokes = new Pokedex.Collections.Pokemon();
 
-      this.pokedex.listPokemon(this.pokes, function() {
-        called = true;
-        done();
-      });
+//    this.pokedex.listPokemon(this.pokes, function() {
+//      called = true;
+//      done();
+//    });
     });
 
     it("calls the callback function", function() {
@@ -73,10 +73,16 @@ describe("listPokemon", function() {
 });
 
 describe("createPokemon", function() {
-  
   it("returns a Pokemon model", function() {
     var pokedex = new Pokedex();
     var poke = pokedex.createPokemon();
     expect(poke.__proto__).toEqual(Pokedex.Models.Pokemon.prototype);
   });  
+
+  it("gives returned model the right attritbutes", function() {
+    var pokedex = new Pokedex();
+    var poke = pokedex.createPokemon({name: "Pikachu", number: 25});
+    expect(poke.get('name')).toEqual("Pikachu");
+    expect(poke.get('number')).toEqual(25);
+  });
 });
