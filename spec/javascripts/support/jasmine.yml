@@ -12,7 +12,7 @@
 #
 src_files:
   - assets/application.js
-
+         
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.
@@ -39,6 +39,7 @@ stylesheets:
 #
 helpers:
   - 'helpers/**/*.js'
+  - spec/javascripts/support/*.js
 
 # spec_files
 #
@@ -73,7 +74,7 @@ src_dir:
 #
 # spec_dir: spec/javascripts
 #
-spec_dir:
+spec_dir: spec/javascripts
 
 # spec_helper
 #

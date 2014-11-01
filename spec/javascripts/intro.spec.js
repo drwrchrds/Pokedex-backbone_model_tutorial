@@ -28,6 +28,7 @@ describe("listPokemon", function() {
     var pokedex = new Pokedex();
     var pokes = new Pokedex.Collections.Pokemon();
 
+    var eventSpy = sinon.spy();
     var heardRequestTrigger = false;
     pokes.on('request', function() {
       heardRequestTrigger = true;
@@ -44,7 +45,7 @@ describe("listPokemon", function() {
   describe("calling the callback function", function() {
     var called = false;
 
-    beforeEach(function (done) {
+    beforeEach(function () {
       this.pokedex = new Pokedex();
       this.pokes = new Pokedex.Collections.Pokemon();
 
