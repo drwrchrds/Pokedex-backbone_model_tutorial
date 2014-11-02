@@ -21,12 +21,11 @@ Pokedex.Collections.Pokemon = Backbone.Collection.extend({
 	comparator: 'number'
 });
 
-Pokedex.prototype.listPokemon = function (callback) {
+Pokedex.prototype.listPokemon = function (pokes, callback) {
 	// create collection
 	// fetch collection
 	// print names asynch
-  this.pokes = this.pokes || new Pokedex.Collections.Pokemon();
-  this.pokes.fetch({
+  pokes.fetch({
     success: callback
   });
 //var that = this;
@@ -66,6 +65,7 @@ Pokedex.prototype.createPokemon = function (attrs, callback) {
   // then use this.pokes.create({
   // success: callback
   // })
+  return poke;
 }
 
 Pokedex.prototype.renderDetail = function (pokemon) {
