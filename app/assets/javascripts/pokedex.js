@@ -1,5 +1,5 @@
 window.Pokedex = function() {
-//	this.pokes = new Pokedex.Collections.Pokemon;
+  this.pokes = new Pokedex.Collections.Pokemon;
 	this.$pokeList = $('.poke-list');
 	this.$pokeDetail = $('.poke-detail');
 	
@@ -21,15 +21,14 @@ Pokedex.Collections.Pokemon = Backbone.Collection.extend({
 	comparator: 'number'
 });
 
-Pokedex.prototype.listPokemon = function (pokemonCollection, callback) {
+Pokedex.prototype.listPokemon = function (callback) {
 	// create collection
 	// fetch collection
 	// print names asynch
-
-  pokemonCollection.fetch({
+  this.pokes = this.pokes || new Pokedex.Collections.Pokemon();
+  this.pokes.fetch({
     success: callback
   });
-  
 //var that = this;
 //this.pokes.fetch({
 //	success: function() {
@@ -60,6 +59,8 @@ Pokedex.prototype.createPokemon = function (attrs, callback) {
 	// save and call callback
 	var poke = new Pokedex.Models.Pokemon(attrs);
 	poke.save();
+
+  this.pokes = this.pokes || new Pokedex.Collections.Pokemon();
 	this.pokes.add(poke);
 	callback && callback.call(this, poke);
   // then use this.pokes.create({
