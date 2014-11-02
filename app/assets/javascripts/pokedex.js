@@ -25,18 +25,17 @@ Pokedex.prototype.listPokemon = function (pokes, callback) {
 	// create collection
 	// fetch collection
 	// print names asynch
-  pokes.fetch({
-    success: callback
+  this.pokes = pokes || this.pokes || new Pokedex.Collections.Pokemon();
+  var that = this;
+  this.pokes.fetch({
+  	success: function() {
+  		that.pokes.each(function(poke) {
+  			that.renderListItem(poke);
+        callback && callback();
+  		});
+  	}
   });
-//var that = this;
-//this.pokes.fetch({
-//	success: function() {
-//		that.pokes.each(function(poke) {
-//			that.renderListItem(poke);
-//		});
-//	}
-//});
-//return this.pokes;
+  return this.pokes;
 }
 
 Pokedex.prototype.renderListItem = function (pokemon) {
@@ -95,6 +94,6 @@ Pokedex.prototype.showDetail = function (event) {
 }
 
 $(function() {
-//	pokedex = new Pokedex;
-//  pokedex.listPokemon();
+	pokedex = new Pokedex;
+  pokedex.listPokemon();
 });
